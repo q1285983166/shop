@@ -1,18 +1,27 @@
 <template>
   <div id="app">
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
     <!-- 底部导航栏组件 -->
     <btm-nav v-show="!$route.meta.btmNav"></btm-nav>
     <div class="go">
-    <transition enter-active-class="animate__animated animate__bounceInRight" leave-active-class="animate__animated animate__bounceOutRight">
-      <ul class="go_box" v-show="goicon">
-        <li size="40px" @click="goto('')"><van-icon color="#fff" name="wap-home-o" /></li>
-        <li size="40px" @click="goto('shopcars')">
-          <van-icon color="#fff" name="shopping-cart-o" />
-        </li>
-        <li size="40px" @click="goto('my')"><van-icon color="#fff" name="contact" /></li>
-      </ul>
-    </transition>
+      <transition
+        enter-active-class="animate__animated animate__bounceInRight"
+        leave-active-class="animate__animated animate__bounceOutRight"
+      >
+        <ul class="go_box" v-show="goicon">
+          <li size="40px" @click="goto('')">
+            <van-icon color="#fff" name="wap-home-o" />
+          </li>
+          <li size="40px" @click="goto('shopcars')">
+            <van-icon color="#fff" name="shopping-cart-o" />
+          </li>
+          <li size="40px" @click="goto('my')">
+            <van-icon color="#fff" name="contact" />
+          </li>
+        </ul>
+      </transition>
       <img
         @click="goicon = true"
         v-show="!goicon"
